@@ -1,98 +1,149 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Atividade Prática: Desenvolvimento de API REST com NestJS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição da Atividade
+Esta atividade prática tem como objetivo consolidar os conhecimentos adquiridos no [tutorial introdutório de API REST e NestJS](https://github.com/infoweb-pos/api-nest-notas-01-introducao) através da implementação de um CRUD completo para gerenciamento de tarefas.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Objetivos de Aprendizado
+Ao final desta atividade, o aluno será capaz de:
+- Configurar um projeto NestJS do zero
+- Implementar um CRUD completo com TypeORM
+- Configurar banco de dados SQLite3
+- Aplicar validações com Class Validator
+- Testar endpoints de uma API REST
+- Implementar boas práticas de desenvolvimento com NestJS
 
-## Description
+# Checklist de Progresso da Atividade
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Use este checklist para acompanhar seu progresso durante a implementação da API de tarefas.
 
-## Project setup
+## ✅ Pré-requisitos e Configuração
 
-```bash
-$ npm install
-```
+### Verificação do Ambiente
+- [X] Node.js (v18+) instalado e funcionando
+- [X] npm instalado e funcionando
+- [X] Git instalado e configurado
+- [X] Editor de código (VS Code recomendado) configurado
+- [X] Cliente REST (Postman/Insomnia/Thunder Client) instalado
 
-## Compile and run the project
+### Configuração Inicial
+- [X] Fork do repositório tutorial realizado
+- [X] Repositório clonado localmente
+- [X] NestJS CLI instalado globalmente (`npm install -g @nestjs/cli`)
+- [X] Projeto NestJS criado (`nest new tasks-api`)
+- [X] Dependências instaladas (TypeORM, SQLite, class-validator, etc.)
 
-```bash
-# development
-$ npm run start
+## 🗂️ Estrutura do Projeto
 
-# watch mode
-$ npm run start:dev
+### Criação de Diretórios
+- [X] Diretório `src/tasks` criado
+- [X] Diretório `src/tasks/dto` criado
+- [ ] Estrutura de pastas organizada conforme especificação
 
-# production mode
-$ npm run start:prod
-```
+### Arquivos Base
+- [ ] `app.module.ts` configurado com TypeORM
+- [ ] `main.ts` configurado com CORS e ValidationPipe
+- [ ] Configuração do banco SQLite implementada
 
-## Run tests
+## 📊 Implementação da Entity
 
-```bash
-# unit tests
-$ npm run test
+### Task Entity (src/tasks/task.entity.ts)
+- [ ] Classe `Task` criada com decorator `@Entity()`
+- [ ] Campo `id` com `@PrimaryGeneratedColumn()`
+- [ ] Campo `title` com `@Column()`
+- [ ] Campo `description` com `@Column()`
+- [ ] Campo `status` com enum `TaskStatus` e configuração adequada
+- [ ] Campos `createdAt` e `updatedAt` com decorators de timestamp
+- [ ] Enum `TaskStatus` definido corretamente (aberto, fazendo, finalizado)
 
-# e2e tests
-$ npm run test:e2e
+## 📝 Implementação dos DTOs
 
-# test coverage
-$ npm run test:cov
-```
+### CreateTaskDto (src/tasks/dto/create-task.dto.ts)
+- [ ] Classe `CreateTaskDto` criada
+- [ ] Validação `@IsString()` e `@IsNotEmpty()` no campo `title`
+- [ ] Validação `@IsString()` e `@IsNotEmpty()` no campo `description`
+- [ ] Validação `@IsEnum()` e `@IsOptional()` no campo `status`
 
-## Deployment
+### UpdateTaskDto (src/tasks/dto/update-task.dto.ts)
+- [ ] Classe `UpdateTaskDto` criada
+- [ ] Todos os campos opcionais com `@IsOptional()`
+- [ ] Validações adequadas mantidas para cada campo
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## 🔧 Implementação do Service
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### TasksService (src/tasks/tasks.service.ts)
+- [ ] Classe `TasksService` com decorator `@Injectable()`
+- [ ] Injeção do repositório com `@InjectRepository(Task)`
+- [ ] Método `findAll()` implementado
+- [ ] Método `findOne(id)` implementado com tratamento de erro 404
+- [ ] Método `create(createTaskDto)` implementado
+- [ ] Método `update(id, updateTaskDto)` implementado
+- [ ] Método `remove(id)` implementado
+- [ ] Tratamento adequado de erros em todos os métodos
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+## 🎮 Implementação do Controller
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### TasksController (src/tasks/tasks.controller.ts)
+- [ ] Classe `TasksController` com decorator `@Controller('tasks')`
+- [ ] Injeção do service no construtor
+- [ ] Endpoint `GET /tasks` com decorator `@Get()`
+- [ ] Endpoint `GET /tasks/:id` com `@Get(':id')` e `ParseIntPipe`
+- [ ] Endpoint `POST /tasks` com `@Post()` e `@Body()`
+- [ ] Endpoint `PUT /tasks/:id` com `@Put(':id')` e validações
+- [ ] Endpoint `DELETE /tasks/:id` com `@Delete(':id')`
+- [ ] Status codes HTTP adequados configurados
 
-## Resources
+## 📦 Configuração do Module
 
-Check out a few resources that may come in handy when working with NestJS:
+### TasksModule (src/tasks/tasks.module.ts)
+- [ ] Classe `TasksModule` com decorator `@Module()`
+- [ ] Importação do `TypeOrmModule.forFeature([Task])`
+- [ ] Controller adicionado ao array `controllers`
+- [ ] Service adicionado ao array `providers`
+- [ ] Módulo importado no `AppModule`
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 🚀 Execução e Testes
 
-## Support
+### Inicialização da Aplicação
+- [ ] Aplicação inicia sem erros (`npm run start:dev`)
+- [ ] Banco de dados SQLite criado automaticamente (tasks.db)
+- [ ] Console mostra "API rodando em http://localhost:3000"
+- [ ] Hot reload funcionando adequadamente
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Teste dos Endpoints - GET
+- [ ] `GET /tasks` retorna array vazio inicialmente (200 OK)
+- [ ] `GET /tasks/1` retorna 404 Not Found quando não há tarefas
 
-## Stay in touch
+### Teste dos Endpoints - POST
+- [ ] `POST /tasks` com dados válidos cria tarefa (201 Created)
+- [ ] `POST /tasks` retorna tarefa criada com ID, timestamps
+- [ ] `POST /tasks` com título vazio retorna 400 Bad Request
+- [ ] `POST /tasks` com status inválido retorna 400 Bad Request
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Teste dos Endpoints - GET com dados
+- [ ] `GET /tasks` retorna array com tarefa(s) criada(s)
+- [ ] `GET /tasks/1` retorna tarefa específica (200 OK)
+- [ ] `GET /tasks/999` retorna 404 Not Found
 
-## License
+### Teste dos Endpoints - PUT
+- [ ] `PUT /tasks/1` com dados válidos atualiza tarefa (200 OK)
+- [ ] `PUT /tasks/1` retorna tarefa atualizada
+- [ ] `PUT /tasks/999` retorna 404 Not Found
+- [ ] Atualização parcial funciona (apenas alguns campos)
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### Teste dos Endpoints - DELETE
+- [ ] `DELETE /tasks/1` remove tarefa (204 No Content)
+- [ ] `DELETE /tasks/999` retorna 404 Not Found
+- [ ] Tarefa removida não aparece mais em `GET /tasks`
+
+## 📋 Testes de Validação
+
+### Validação de Entrada
+- [ ] Campos obrigatórios (title, description) são validados
+- [ ] Status aceita apenas valores válidos (aberto, fazendo, finalizado)
+- [ ] Campos extras são ignorados (whitelist ativa)
+- [ ] Mensagens de erro são claras e específicas
+
+### Validação de IDs
+- [ ] IDs não numéricos retornam 400 Bad Request
+- [ ] IDs decimais são tratados adequadamente
+- [ ] IDs negativos são tratados adequadamente
