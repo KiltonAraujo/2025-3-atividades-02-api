@@ -37,23 +37,23 @@ Use este checklist para acompanhar seu progresso durante a implementação da AP
 ### Criação de Diretórios
 - [X] Diretório `src/tasks` criado
 - [X] Diretório `src/tasks/dto` criado
-- [ ] Estrutura de pastas organizada conforme especificação
+- [|X] Estrutura de pastas organizada conforme especificação
 
 ### Arquivos Base
-- [ ] `app.module.ts` configurado com TypeORM
-- [ ] `main.ts` configurado com CORS e ValidationPipe
-- [ ] Configuração do banco SQLite implementada
+- [X] `app.module.ts` configurado com TypeORM
+- [X] `main.ts` configurado com CORS e ValidationPipe
+- [X] Configuração do banco SQLite implementada
 
 ## 📊 Implementação da Entity
 
 ### Task Entity (src/tasks/task.entity.ts)
-- [ ] Classe `Task` criada com decorator `@Entity()`
-- [ ] Campo `id` com `@PrimaryGeneratedColumn()`
-- [ ] Campo `title` com `@Column()`
-- [ ] Campo `description` com `@Column()`
-- [ ] Campo `status` com enum `TaskStatus` e configuração adequada
-- [ ] Campos `createdAt` e `updatedAt` com decorators de timestamp
-- [ ] Enum `TaskStatus` definido corretamente (aberto, fazendo, finalizado)
+- [X] Classe `Task` criada com decorator `@Entity()`
+- [X] Campo `id` com `@PrimaryGeneratedColumn()`
+- [X] Campo `title` com `@Column()`
+- [X] Campo `description` com `@Column()`
+- [X] Campo `status` com enum `TaskStatus` e configuração adequada
+- [X] Campos `createdAt` e `updatedAt` com decorators de timestamp
+- [X] Enum `TaskStatus` definido corretamente (aberto, fazendo, finalizado)
 
 ## 📝 Implementação dos DTOs
 
