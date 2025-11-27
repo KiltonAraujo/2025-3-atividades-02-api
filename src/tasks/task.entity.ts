@@ -24,7 +24,8 @@ export class Task {
 	@Column()
 	description: string;
 
-	@Column({ type: 'enum', enum: TaskStatus, default: TaskStatus.ABERTO })
+	// SQLite não suporta 'enum' nativamente — armazenamos como texto
+	@Column({ type: 'text', default: TaskStatus.ABERTO })
 	status: TaskStatus;
 
 	@CreateDateColumn()
