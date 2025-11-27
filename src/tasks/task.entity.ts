@@ -1,36 +1,38 @@
-
 import {
-	Entity,
-	PrimaryGeneratedColumn,
-	Column,
-	CreateDateColumn,
-	UpdateDateColumn,
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 export enum TaskStatus {
-	ABERTO = 'aberto',
-	FAZENDO = 'fazendo',
-	FINALIZADO = 'finalizado',
+  ABERTO = 'aberto',
+  FAZENDO = 'fazendo',
+  FINALIZADO = 'finalizado',
 }
 
 @Entity()
 export class Task {
-	@PrimaryGeneratedColumn()
-	id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-	@Column()
-	title: string;
+  @Column()
+  title: string;
 
-	@Column()
-	description: string;
+  @Column()
+  description: string;
 
-	// SQLite não suporta 'enum' nativamente — armazenamos como texto
-	@Column({ type: 'text', default: TaskStatus.ABERTO })
-	status: TaskStatus;
+  @Column({
+    type: 'text',
+    enum: TaskStatus,
+    default: TaskStatus.ABERTO,
+  })
+  status: TaskStatus;
 
-	@CreateDateColumn()
-	createdAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
 
-	@UpdateDateColumn()
-	updatedAt: Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

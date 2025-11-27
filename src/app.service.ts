@@ -2,7 +2,12 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+
+  getInfo() {
+    return { 
+      status: 'online', 
+      version: '1.0.0', 
+      description: 'Esta é API de tarefas (todos) da turma de Infoweb 2025.'
+    };
   }
 }

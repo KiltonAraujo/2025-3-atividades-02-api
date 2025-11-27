@@ -58,15 +58,15 @@ Use este checklist para acompanhar seu progresso durante a implementação da AP
 ## 📝 Implementação dos DTOs
 
 ### CreateTaskDto (src/tasks/dto/create-task.dto.ts)
-- [ ] Classe `CreateTaskDto` criada
-- [ ] Validação `@IsString()` e `@IsNotEmpty()` no campo `title`
-- [ ] Validação `@IsString()` e `@IsNotEmpty()` no campo `description`
-- [ ] Validação `@IsEnum()` e `@IsOptional()` no campo `status`
+- [X] Classe `CreateTaskDto` criada
+- [X] Validação `@IsString()` e `@IsNotEmpty()` no campo `title`
+- [X] Validação `@IsString()` e `@IsNotEmpty()` no campo `description`
+- [X] Validação `@IsEnum()` e `@IsOptional()` no campo `status`
 
 ### UpdateTaskDto (src/tasks/dto/update-task.dto.ts)
-- [ ] Classe `UpdateTaskDto` criada
-- [ ] Todos os campos opcionais com `@IsOptional()`
-- [ ] Validações adequadas mantidas para cada campo
+- [X] Classe `UpdateTaskDto` criada
+- [X] Todos os campos opcionais com `@IsOptional()`
+- [X] Validações adequadas mantidas para cada campo
 
 ## 🔧 Implementação do Service
 

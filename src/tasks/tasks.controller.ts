@@ -2,14 +2,13 @@ import {
   Controller,
   Get,
   Post,
-  Put,
-  Delete,
-  Param,
   Body,
-  HttpCode,
-  UsePipes,
-  ValidationPipe,
+  Put,
+  Param,
+  Delete,
   ParseIntPipe,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -17,29 +16,27 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task } from './task.entity';
 
 @Controller('tasks')
-@UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Get()
-  async findAll(): Promise<Task[]> {
+  findAll(): Promise<Task[]> {
     return this.tasksService.findAll();
   }
 
   @Get(':id')
-  async findOne(@Param('id', ParseIntPipe) id: number): Promise<Task> {
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<Task> {
     return this.tasksService.findOne(id);
   }
 
   @Post()
-  @HttpCode(201)
-  async create(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+  @HttpCode(HttpStatus.CREATED)
+  create(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
     return this.tasksService.create(createTaskDto);
   }
 
   @Put(':id')
-  @HttpCode(200)
-  async update(
+  update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateTaskDto: UpdateTaskDto,
   ): Promise<Task> {
@@ -47,7 +44,7 @@ export class TasksController {
   }
 
   @Delete(':id')
-  @HttpCode(204)
+  @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.tasksService.remove(id);
   }

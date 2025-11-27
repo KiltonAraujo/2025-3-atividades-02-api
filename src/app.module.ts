@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
@@ -10,10 +11,9 @@ import { TasksModule } from './tasks/tasks.module';
       type: 'sqlite',
       database: 'tasks.db',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
-      logging: false,
+      synchronize: true, // Apenas para desenvolvimento
     }),
-    TasksModule,
+    TasksModule
   ],
   controllers: [AppController],
   providers: [AppService],
